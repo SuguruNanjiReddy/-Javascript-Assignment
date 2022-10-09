@@ -1,0 +1,53 @@
+<!DOCTYPEhtml>
+
+<head>
+
+</head>
+
+<body>
+
+    <h3>Online JSON PUT</h3>
+    <input type="button" value="REQUEST" onclick="JSONonlinePUT()">
+    <hr>
+
+    <script>
+        var data = {
+            "id": 11,
+            "name": "Nanji reddy",
+            "username": "nanji",
+            "email": "Reddy@.com",
+            "address": {
+                "street": "near hanuman temple",
+                "suite": "Apt. 556",
+                "city": "Hindupur",
+                "zipcode": "82888-3874",
+                "geo": {
+                    "lat": "-37.3159",
+                    "lng": "81.1496"
+                }
+            },
+            "phone": "1-770-736-8031 x56442",
+            "website": "hildegard.org",
+            "company": {
+                "name": "Ananda-reddy",
+                "catchPhrase": "Service-layered",
+                "bs": "real-time e-markets"
+            }
+        }
+
+        function JSONonlinePUT() {
+            var url = "https://jsonplaceholder.typicode.com/users";
+            // PUT request
+            fetch(url + "/?id=" + data.id, {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json()
+                .then(r => console.log("Record UPDATED!")));
+        }
+    </script>
+</body>
+
+</html>
